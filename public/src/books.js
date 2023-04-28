@@ -39,3 +39,11 @@ function getBorrowersForBook(book={}, accounts=[]) {
   })
     return whoBorrowed
 }
+
+
+module.exports = {
+  findAuthorById,
+  findBookById,
+  partitionBooksByBorrowedStatus,
+  getBorrowersForBook,
+};
