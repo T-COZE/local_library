@@ -19,3 +19,23 @@ const findAuthorById=(authors, id)=> {
    })
    return [outLibrary,inLibrary];
  }
+
+function getBorrowersForBook(book={}, accounts=[]) {
+  const {borrows} = book;
+  const whoBorrowed=[]
+  let counter = 0;
+  //borrows loop to get id for each time book was borrowed
+  borrows.forEach((borrowsObj)=>{
+      const borrowerId = borrowsObj.id
+      accounts.find((account)=>{
+        //push found account onto whoBorrowed
+        if(account.id === borrowerId && counter < 10){
+          whoBorrowed.push({...borrowsObj,...account});
+          counter++
+        }else{
+          return;
+        }
+      })
+  })
+    return whoBorrowed
+}
